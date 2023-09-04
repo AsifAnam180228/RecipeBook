@@ -14,6 +14,12 @@ import { ButtonModule } from 'primeng/button';
 import {RippleModule} from "primeng/ripple";
 import { SplitButtonModule } from 'primeng/splitbutton';
 import {NgOptimizedImage} from "@angular/common";
+import { DropdownDirective } from './shared/dropdown.directive';
+import {DropdownModule} from "primeng/dropdown";
+import {PaginatorModule} from "primeng/paginator";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MenuModule} from "primeng/menu";
+import {MenubarModule} from "primeng/menubar";
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +29,8 @@ import {NgOptimizedImage} from "@angular/common";
     RecipeDetailComponent,
     RecipeItemComponent,
     ShoppingListComponent,
-    ShoppingEditComponent
+    ShoppingEditComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
@@ -31,7 +38,12 @@ import {NgOptimizedImage} from "@angular/common";
     RouterLink,
     RippleModule,
     SplitButtonModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    DropdownModule,
+    PaginatorModule,
+    BrowserAnimationsModule,
+    MenuModule,
+    MenubarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

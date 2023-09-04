@@ -14,18 +14,9 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <div class="btn-group">
-      <button class="btn btn-primary dropdown-toggle" type="button" id = "dropdownMenuButton1"
-              data-bs-toggle = "dropdown" aria-expanded="false">
-        Manage Recipe <span></span>
-      </button>
-<!--        <p-button label="Manage Recipe" class="dropdown-toggle"> <span></span></p-button>-->
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#">To shopping List </a></li>
-        <li><a class="dropdown-item" href="#">Edit Recipe</a></li>
-        <li><a class="dropdown-item" href="#">Delete Recipe</a></li>
-      </ul>
-  </div>
+    <div class=" flex justify-content-center">
+      <p-dropdown [options]="options" [(ngModel)]="selectedOption" optionLabel="label" styleClass="custom-dropdown"></p-dropdown>
+    </div>
 </div>
 </div>
 <div class="row">
