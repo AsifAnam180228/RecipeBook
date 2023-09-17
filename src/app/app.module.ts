@@ -20,6 +20,7 @@ import {PaginatorModule} from "primeng/paginator";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MenuModule} from "primeng/menu";
 import {MenubarModule} from "primeng/menubar";
+import {ShoppingListService} from "./shopping-list/shopping-list.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,7 @@ import {MenubarModule} from "primeng/menubar";
     MenuModule,
     MenubarModule
   ],
-  providers: [],
+  providers: [ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
