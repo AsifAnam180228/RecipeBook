@@ -1,12 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
 // import { SplitButtonModule } from 'primeng/splitbutton';
-import {DropdownModule} from "primeng/dropdown";
+import {DropdownChangeEvent, DropdownModule} from "primeng/dropdown";
 import {Recipe} from "../recipe.model";
 import {MenuItem} from "primeng/api";
-interface Option{
-  label: string;
-  command?(event : any) : void;
-}
+import {RecipeService} from "../recipe.service";
+import {Ingredient} from "../../shared/ingredient.model";
+// interface Option{
+//   label: string;
+//   command?(event : any) : void;
+// }
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
@@ -19,32 +21,33 @@ export class RecipeDetailComponent implements OnInit{
   options : MenuItem[] = [];
   selectedOption : MenuItem | undefined;
 
-  constructor() {
-    this.options = [
-      {label: 'To Shopping List',
-        command: () =>{
-        this.toShoppingList()
-        }},
-      {label: 'Edit Recipe',
-        command: () =>{
-          this.editRecipe()
-        }},
-      {label: 'Delete Recipe',
-        command: () =>{
-          this.deleteRecipe()
-        }},
+  constructor(private recipeSErvice: RecipeService) {
 
-    ]
     console.log('hello')
     console.log(this.selectedOption)
   }
 
   ngOnInit(): void {
-
+    this.options = [
+      {label: 'Hello Shopping List',
+        command: (event) =>{
+          this.toShoppingList()
+        }},
+      {label: 'Edit Recipe',
+        command: (event) =>{
+          this.editRecipe()
+        }},
+      {
+        label: 'Delete Recipe',
+        command: (event) =>{
+          this.deleteRecipe()
+        }
+        },
+    ]
   }
 
   private toShoppingList() {
-    console.log('added to shopping list')
+      this.recipeSErvice.addIngredientsToShoppingList(this.recipe.ingredients)
   }
 
   private editRecipe() {
@@ -53,5 +56,10 @@ export class RecipeDetailComponent implements OnInit{
 
   private deleteRecipe() {
     console.log('delete recipe')
+  }
+
+  Onchange(event: any) {
+    event.value.command(this.selectedOption)
+    // console.log(event.value.command())
   }
 }
