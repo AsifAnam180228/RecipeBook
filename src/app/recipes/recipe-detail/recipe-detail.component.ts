@@ -5,6 +5,7 @@ import {Recipe} from "../recipe.model";
 import {MenuItem} from "primeng/api";
 import {RecipeService} from "../recipe.service";
 import {Ingredient} from "../../shared/ingredient.model";
+import {ActivatedRoute, Data, Params, Router} from "@angular/router";
 // interface Option{
 //   label: string;
 //   command?(event : any) : void;
@@ -17,17 +18,26 @@ import {Ingredient} from "../../shared/ingredient.model";
 
 
 export class RecipeDetailComponent implements OnInit{
-  @Input() recipe!: Recipe;
+  recipe!: Recipe;
   options : MenuItem[] = [];
   selectedOption : MenuItem | undefined;
-
-  constructor(private recipeSErvice: RecipeService) {
+  id!: number;
+  constructor(private recipeService: RecipeService,
+              private route: ActivatedRoute,
+              private router: Router) {
 
     console.log('hello')
     console.log(this.selectedOption)
   }
 
   ngOnInit(): void {
+   this.route.params
+     .subscribe(
+       (params: Params)=>{
+         this.id = +params['id']
+         this.recipe = this.recipeService.getRecipe(this.id)
+       })
+
     this.options = [
       {label: 'Hello Shopping List',
         command: (event) =>{
@@ -47,11 +57,12 @@ export class RecipeDetailComponent implements OnInit{
   }
 
   private toShoppingList() {
-      this.recipeSErvice.addIngredientsToShoppingList(this.recipe.ingredients)
+      this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients)
   }
 
   private editRecipe() {
     console.log('edit recipe')
+    this.router.navigate(['edit'], {relativeTo: this.route})
   }
 
   private deleteRecipe() {

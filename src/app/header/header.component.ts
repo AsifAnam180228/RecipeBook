@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 import {MenuItem, SelectItem} from "primeng/api";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -8,18 +9,23 @@ import {MenuItem, SelectItem} from "primeng/api";
 })
 export class HeaderComponent {
   // @ViewChild('menu') menu: any;
-  @Output() featureSelected = new EventEmitter<string>();
+  // @Output() featureSelected = new EventEmitter<string>();
   collapsed = true;
   selectedMenuItem !: string;
 
+  constructor(private route: Router) {
+  }
   menuModel: MenuItem[] = [
     {
       label: 'Recipes',
-      command: () => this.onSelect('recipe'),
+      command: () => this.route.navigate(['/recipes']),
+      // command: () => this.onSelect('recipe'),1
+      //
     },
     {
       label: 'Shopping List',
-      command: () => this.onSelect('shopping-list'),
+      // command: () => this.onSelect('shopping-list'),
+      command: () => this.route.navigate(['/shopping-list']),
     },
 
   ];
@@ -42,9 +48,10 @@ export class HeaderComponent {
       this.fetchData();
     }
   }
-  onSelect(feature: string) {
-    this.featureSelected.emit(feature)
-  }
+  // onSelect(feature: string) {
+  //   this.featureSelected.emit(feature)
+  //   // this.route.navigate(['/recipes'])
+  // }
 
   private saveData() {
     console.log('saveData')
