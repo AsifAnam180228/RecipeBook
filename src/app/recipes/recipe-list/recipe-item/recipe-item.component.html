@@ -1,15 +1,33 @@
-<a
-   class="list-group-item clearfix border border-1"
-    [routerLink]="[index]"
-   routerLinkActive="active"
-    style="cursor: pointer"
+<!--<div class="grid">-->
+<!--  <div class="card">-->
+<!--    <a-->
+<!--      class=""-->
+<!--      [routerLink]="[index]"-->
+<!--      routerLinkActive="active"-->
+<!--      style="cursor: pointer"-->
+<!--    >-->
+<!--      <div class="col border-1 border-primary">-->
+<!--        <h4 class="">{{recipe.name}}</h4>-->
+<!--        <p class="">{{recipe.description}}</p>-->
+<!--      </div>-->
+<!--      <span class="col border-1 border-primary">-->
+<!--        <img [src]="recipe.imagepath" class=""-->
+<!--             style="max-height: 50px" alt="{{recipe.name}}">-->
+<!--      </span>-->
+<!--    </a>-->
+<!--  </div>-->
+<!--</div>-->
+
+<p-card header="{{recipe.name}}"
+        [routerLink]="[index]"
+        routerLinkActive="active"
+        [style]="{'cursor': 'pointer'}"
+        class="col-offset-3"
 >
-  <div class="float-start">
-    <h4 class="list-group-item">{{recipe.name}}</h4>
-    <p class="list-group-item">{{recipe.description}}</p>
-  </div>
-  <span class="float-end">
-        <img [src]="recipe.imagepath" class="img-fluid"
-             style="max-height: 50px" alt="{{recipe.name}}">
-      </span>
-</a>
+  <ng-template pTemplate="header">
+    <img [src]="recipe.imagepath" alt="card"
+         [style]="{ 'margin':'5px','max-height':'50px','max-width': '40px'}">
+  </ng-template>
+  <p>{{recipe.description}}</p>
+</p-card>
+

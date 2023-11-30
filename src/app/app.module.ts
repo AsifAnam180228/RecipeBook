@@ -24,6 +24,9 @@ import {ShoppingListService} from "./shopping-list/shopping-list.service";
 import {AppRoutingModule} from "./app-routing.module";
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import {CardModule} from "primeng/card";
+import {ListboxModule} from "primeng/listbox";
+import {InputTextModule} from "primeng/inputtext";
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,20 +41,23 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     RecipeStartComponent,
     RecipeEditComponent
   ],
-  imports: [
-    BrowserModule,
-    ButtonModule,
-    RouterLink,
-    RippleModule,
-    SplitButtonModule,
-    NgOptimizedImage,
-    DropdownModule,
-    PaginatorModule,
-    BrowserAnimationsModule,
-    MenuModule,
-    MenubarModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        ButtonModule,
+        RouterLink,
+        RippleModule,
+        SplitButtonModule,
+        NgOptimizedImage,
+        DropdownModule,
+        PaginatorModule,
+        BrowserAnimationsModule,
+        MenuModule,
+        MenubarModule,
+        AppRoutingModule,
+        CardModule,
+        ListboxModule,
+        InputTextModule
+    ],
   providers: [ShoppingListService],
   bootstrap: [AppComponent]
 })
