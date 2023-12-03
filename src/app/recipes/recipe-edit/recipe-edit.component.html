@@ -1,5 +1,5 @@
 
-    <form>
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <p-button type="submit" styleClass="p-button-success" label="Save"></p-button>
         <p-button type="button" styleClass="p-button-danger" label="Cancel"></p-button>
@@ -7,14 +7,17 @@
           <div class="field grid">
             <label for="name" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>
             <div class="col-12 md:col-10">
-              <input type="text" pInputText id="name" class="">
+              <input type="text" pInputText id="name"
+                     formControlName="name" class="">
             </div>
 
           </div>
         <div class="field grid">
           <label for="imagePath" class="col-12 mb-2 md:col-2 md:mb-0">Image Url</label>
           <div class="col-12 md:col-10">
-            <input type="text" pInputText id="imagePath" class="">
+            <input type="text" pInputText id="imagePath"
+                   formControlName="imagePath"
+                   class="">
           </div>
 
         </div>
@@ -27,21 +30,26 @@
       <div class="field grid">
         <label for="description" class="col-12 mb-2 md:col-2 md:mb-0">Description</label>
         <div class="col-12 md:col-10">
-          <textarea  pInputText id="description" class="" rows="6">
+          <textarea  pInputText id="description" formControlName="description" class="" rows="6">
           </textarea>
         </div>
       </div>
-      <div class="formgroup-inline">
-        <div class="field">
-            <input type="text" pInputText  class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+      <div class="formgroup-inline" formArrayName="ingredients">
+        <div class="grid"
+             *ngFor="let ingredientCtrl of controls; let i =index" [formGroupName]="i">
+          <div class="field">
+            <input type="text" pInputText formControlName="name"
+                   class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+          </div>
+          <div class="field">
+            <input type="text" pInputText  formControlName="amount"
+                   class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+          </div>
+          <div class="field">
+            <p-button styleClass="p-button-danger">X</p-button>
+          </div>
         </div>
-        <div class="field">
-            <input type="text" pInputText  class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
-        </div>
-        <div class="field">
-          <p-button styleClass="p-button-danger">X</p-button>
-        </div>
-      </div>
 
+      </div>
     </form>
 

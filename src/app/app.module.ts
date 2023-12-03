@@ -27,6 +27,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import {CardModule} from "primeng/card";
 import {ListboxModule} from "primeng/listbox";
 import {InputTextModule} from "primeng/inputtext";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,8 @@ import {InputTextModule} from "primeng/inputtext";
         RippleModule,
         SplitButtonModule,
         NgOptimizedImage,
+        FormsModule,
+        ReactiveFormsModule,
         DropdownModule,
         PaginatorModule,
         BrowserAnimationsModule,
