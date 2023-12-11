@@ -17,6 +17,11 @@ constructor(private recipeService : RecipeService,
 }
 
   ngOnInit() {
+    this.recipeService.recipesChanged.subscribe(
+      (recipes: Recipe[])=>{
+        this.recipes = recipes
+      }
+    )
     this.recipes = this.recipeService.getRecipies();
   }
 
