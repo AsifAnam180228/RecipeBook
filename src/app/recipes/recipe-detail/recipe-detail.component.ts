@@ -50,7 +50,7 @@ export class RecipeDetailComponent implements OnInit{
       {
         label: 'Delete Recipe',
         command: (event) =>{
-          this.deleteRecipe()
+          this.onDeleteRecipe()
         }
         },
     ]
@@ -65,7 +65,8 @@ export class RecipeDetailComponent implements OnInit{
     this.router.navigate(['edit'], {relativeTo: this.route})
   }
 
-  private deleteRecipe() {
+  onDeleteRecipe() {
+    this.recipeService.deleteRecipe(this.id)
     console.log('delete recipe')
   }
 

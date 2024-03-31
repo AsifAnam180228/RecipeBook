@@ -5,7 +5,7 @@
                   [disabled]="!recipeForm.valid"
                   styleClass="p-button-success"
                   label="Save"></p-button>
-        <p-button type="button" styleClass="p-button-danger" label="Cancel"></p-button>
+        <p-button type="button" styleClass="p-button-danger" label="Cancel" (click)="onCancel()"></p-button>
       </div>
           <div class="field grid">
             <label for="name" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>
