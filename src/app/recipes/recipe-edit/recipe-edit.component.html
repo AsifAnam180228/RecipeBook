@@ -20,13 +20,14 @@
           <div class="col-12 md:col-10">
             <input type="text" pInputText id="imagePath"
                    formControlName="imagePath"
+                   #imagePath
                    class="">
           </div>
 
         </div>
       <div class="field grid">
         <div class="col-12 md:col-10">
-          <img src="" class="p-image-preview-container">
+          <img [src]="imagePath.value" class="p-image-preview-container">
         </div>
 
       </div>
@@ -50,7 +51,7 @@
                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
           </div>
           <div class="field col-3">
-            <p-button styleClass="p-button-danger">X</p-button>
+            <p-button styleClass="p-button-danger" type="button" (click)="onDeleteIngredient(i)">X</p-button>
           </div>
         </div>
         <hr>

@@ -1,3 +1,4 @@
+import { RecipeService } from './recipes/recipe.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -61,7 +62,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         ListboxModule,
         InputTextModule
     ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
