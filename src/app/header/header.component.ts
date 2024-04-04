@@ -63,6 +63,7 @@ export class HeaderComponent {
   }
 
   onFetchData() {
-    console.log('fetch Data')
+    console.log('fetch Data');
+    this.dataStorageService.fetchRecipes();
   }
 }
