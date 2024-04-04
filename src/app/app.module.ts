@@ -1,7 +1,7 @@
 import { RecipeService } from './recipes/recipe.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { RecipesComponent } from './recipes/recipes.component';
@@ -60,7 +60,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         AppRoutingModule,
         CardModule,
         ListboxModule,
-        InputTextModule
+        InputTextModule,
+        HttpClientModule
+
     ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]

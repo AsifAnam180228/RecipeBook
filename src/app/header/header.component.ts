@@ -1,3 +1,4 @@
+import { DataStorageService } from './../shared/data-storage.service';
 import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 import {MenuItem, SelectItem} from "primeng/api";
 import {Router} from "@angular/router";
@@ -13,7 +14,10 @@ export class HeaderComponent {
   collapsed = true;
   selectedMenuItem !: string;
 
-  constructor(private route: Router) {
+  constructor(
+    private route: Router,
+    private dataStorageService: DataStorageService
+    ) {
   }
   menuModel: MenuItem[] = [
     {
@@ -42,10 +46,10 @@ export class HeaderComponent {
 
   onMenuItemSelected(){
     if(this.selectedMenuItem === 'save'){
-      this.saveData();
+      this.onSaveData();
     }
     else if(this.selectedMenuItem === 'fetch'){
-      this.fetchData();
+      this.onFetchData();
     }
   }
   // onSelect(feature: string) {
@@ -53,11 +57,12 @@ export class HeaderComponent {
   //   // this.route.navigate(['/recipes'])
   // }
 
-  private saveData() {
-    console.log('saveData')
+  onSaveData() {
+    console.log('saveData');
+    this.dataStorageService.storeRecipes();
   }
 
-  private fetchData() {
+  onFetchData() {
     console.log('fetch Data')
   }
 }
